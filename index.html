@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App for Farmers</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Weather & Crop Advisor</h1>
+            <div class="weather-input">
+                <input type="text" name="City" id="city_input" placeholder="Enter City name">
+                <button type="button" id="searchBtn">Search</button>
+                <button type="button" id="locationBtn">Current location</button>
+            </div>
+        </div>
+        
+        <div class="weather-data">
+            <!-- Current Weather Card -->
+            <div class="card">
+                <div class="current-weather">
+                    <div class="details">
+                        <h2 id="temp">--°C</h2>
+                        <p id="description">--</p>
+                    </div>
+                    <div class="weather-icon">
+                        <img id="weather-icon" src="https://openweathermap.org/img/wn/04d@2x.png" alt="Weather icon">
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <p id="date">--</p>
+                    <p id="location">--</p>
+                </div>
+            </div>
+            
+            <!-- Crop Recommendation Card -->
+            <div class="card">
+                <h2>Today's Crop Recommendations</h2>
+                <div id="crop-recommendation">
+                    <div class="recommendation-item">
+                        <h3>Based on Current Weather</h3>
+                        <p id="recommendation-text">Loading recommendations...</p>
+                    </div>
+                    <div class="recommendation-item">
+                        <h3>Suggested Actions</h3>
+                        <ul id="action-list">
+                            <li>Please search for a location to get recommendations</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 5-Day Forecast (Simplified) -->
+            <div class="card">
+                <h2>5 Day Forecast</h2>
+                <div id="forecast-container">
+                    <!-- Forecast items will be added here by JavaScript -->
+                </div>
+            </div>
+            <div class="card">
+                <h3>Fertilizer Advice</h3>
+                <div class="card-content" id="cardContent">
+                    <p class="demoTitle">&nbsp;</p>
+                    <header class="text-center mb-8">
+                    <h1 class="text-4xl font-bold text-gray-800">Weekly Fertilizer Usage Plan</h1>
+                    <p class="text-gray-600">Plan your fertilizer usage for optimal plant growth</p>
+                    </header>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h2 class="text-2xl font-bold mb-2">Week 0 (Preparation Stage)</h2>
+                    <img class="mb-4" src="https://storage.googleapis.com/a1aa/image/B8SpmgQuxWa2ORxgsqGDtQjReqN8AEDIZ2Pau7a0dbNHdL9JA.jpg" width="150" height="100" />
+                    <p class="text-gray-700" >Objective: Prepare the soil for planting.</p>
+                    <p class="text-gray-700">Apply basal fertilizer with a focus on phosphorus (P) and potassium (K) to encourage root development.</p>
+                    <p class="text-gray-700">Example: DAP (Di-Ammonium Phosphate) or SSP (Single Super Phosphate).</p>
+                    <p class="text-gray-700">Dosage: 50&ndash;60 kg P₂O₅/ha and 40&ndash;50 kg K₂O/ha.</p>
+                    <p class="text-gray-700">Incorporate organic matter such as compost or well-decomposed manure (5&ndash;10 tons/ha).</p>
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h2 class="text-2xl font-bold mb-2">Week 1 (After Transplanting or Emergence)</h2>
+                    <img class="mb-4" src="https://storage.googleapis.com/a1aa/image/Od5e8sY5y128ECf7KJ0rQ8xOumADu2bpSJpCLD4i3JfZ0t0nA.jpg" width="150" height="100" />
+                    <p class="text-gray-700">Objective: Encourage vigorous vegetative growth.</p>
+                    <p class="text-gray-700">Apply Urea (Nitrogen source) for early growth.</p>
+                    <p class="text-gray-700">Dosage: 30&ndash;40 kg N/ha.</p>
+                    <p class="text-gray-700">Method: Broadcast uniformly or use as topdressing in flooded fields.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h2 class="text-2xl font-bold mb-2">Week 2</h2>
+                    <img class="mb-4" src="https://storage.googleapis.com/a1aa/image/sBqZcJp3eMzKdyqpTFbIT4xEaViSkeLAi6sz86PliGML6W6TA.jpg" alt="Image of a garden with young plants and no fertilizer application" width="150" height="100" />
+                    <p class="text-gray-700">Check for pest or weed pressure. Use integrated pest management if needed.</p>
+                    <p class="text-gray-700">No additional fertilizer.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h2 class="text-2xl font-bold mb-2">Week 3</h2>
+                    <img class="mb-4" src="https://storage.googleapis.com/a1aa/image/yYXANRJ4QfXPUaN6snxNEhN4XNWRmSOe5PdLoVu38RLE6W6TA.jpg" alt="Image of a garden with plants and fertilizer application" width="150" height="100" />
+                    <p class="text-gray-700">Conduct the first topdressing of nitrogen.</p>
+                    <p class="text-gray-700">Use Urea: 20&ndash;30 kg N/ha.</p>
+                    <p class="text-gray-700">Apply when fields are slightly drained or just before irrigation.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h2 class="text-2xl font-bold mb-2">Week 4</h2>
+                    <img class="mb-4" src="https://storage.googleapis.com/a1aa/image/yYXANRJ4QfXPUaN6snxNEhN4XNWRmSOe5PdLoVu38RLE6W6TA.jpg" alt="Image of a garden with plants and fertilizer application" width="150" height="100" />
+                    <p class="text-gray-700">Apply a second dose of nitrogen if tillering is not sufficient.</p>
+                    <p class="text-gray-700">Urea: 20&ndash;30 kg N/ha.</p>
+                    <p class="text-gray-700">Include a micronutrient mix with zinc sulfate (5&ndash;10 kg/ha) to prevent deficiencies.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h2 class="text-2xl font-bold mb-2">Week 5</h2>
+                    <img class="mb-4" src="https://storage.googleapis.com/a1aa/image/yYXANRJ4QfXPUaN6snxNEhN4XNWRmSOe5PdLoVu38RLE6W6TA.jpg" alt="Image of a garden with plants and fertilizer application" width="150" height="100" />
+                    <p class="text-gray-700">Apply potassium sulfate (K₂SO₄) or Muriate of Potash (MOP) for panicle development.</p>
+                    <p class="text-gray-700">Dosage: 40&ndash;50 kg K₂O/ha.</p>
+                    <p class="text-gray-700">Method: Incorporate into soil before irrigation.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h2 class="text-2xl font-bold mb-2">Week 6</h2>
+                    <img class="mb-4" src="https://storage.googleapis.com/a1aa/image/yYXANRJ4QfXPUaN6snxNEhN4XNWRmSOe5PdLoVu38RLE6W6TA.jpg" alt="Image of a garden with plants and fertilizer application" width="150" height="100" />
+                    <p class="text-gray-700">Apply a small amount of nitrogen for flowering boost (optional if signs of deficiency are observed).</p>
+                    <p class="text-gray-700">Urea: 10&ndash;15 kg N/ha.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h2 class="text-2xl font-bold mb-2">Week 7</h2>
+                    <img class="mb-4" src="https://storage.googleapis.com/a1aa/image/TSYK5bv4Ns4sBZweQ3MoTOqInKwtuhAAnjy7qk2mWc6EdL9JA.jpg" alt="Image of a garden with plants and foliar fertilizer application" width="150" height="100" />
+                    <p class="text-gray-700">Spray foliar fertilizers containing boron (1&ndash;2 kg/ha) and silicon to improve grain quality and stress tolerance.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h2 class="text-2xl font-bold mb-2">Week 8</h2>
+                    <img class="mb-4" src="https://storage.googleapis.com/a1aa/image/7wr3qWDPJwayBhxNrdAxtk7D8t2Bog7WDVyWveVOCT7CdL9JA.jpg" alt="Image of a garden with plants and proper water levels" width="150" height="100" />
+                    <p class="text-gray-700">Maintain proper water levels and avoid fertilizer application to prevent overgrowth or lodging.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h2 class="text-2xl font-bold mb-2">Week 9&ndash;12 (Ripening Stage)</h2>
+                    <img class="mb-4" src="https://storage.googleapis.com/a1aa/image/NLSWkDSlK164Gh6IQxsZA7fRphta4LdS569OBZpYBobEdL9JA.jpg" alt="Image of a garden with ripening plants and no fertilizer application" width="150" height="100" />
+                    <p class="text-gray-700">Objective: Complete grain filling and hardening.</p>
+                    <p class="text-gray-700">Avoid further nitrogen to prevent delays in maturity.</p>
+                    <p class="text-gray-700">Use potassium if needed to strengthen grain formation.</p>
+                    </div>
+                    </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
